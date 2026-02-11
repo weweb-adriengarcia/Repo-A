@@ -1,0 +1,23 @@
+name: Build with WeWeb export
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo A
+        uses: actions/checkout@v4
+
+      - name: Checkout Repo B
+        uses: actions/checkout@v4
+        with:
+          repository: weweb-adriengarcia/repo-b  # Change this to your weweb repo
+          path: weweb-src                        # Folder where to place weweb code
+          token: ${{ secrets.GITHUB_TOKEN_PRIVATE_PULL_WEWEB }}
+
+      - name: Build/Test
+        run: |
+          # Your build commands here
+          # You can now use files from weweb-src/
+          ls -laht weweb-src/
