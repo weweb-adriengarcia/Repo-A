@@ -30,7 +30,7 @@ Your GitHub Actions workflow needs to pull weweb code from your weweb repo and i
 In **Repo A** (where your CI runs), create it if needed:
 1. Go to Settings → Secrets and variables → Actions
 2. Click "New repository secret"
-3. Name: `GITHUB_TOKEN_PRIVATE_PULL_WEWEB`
+3. Name: `GH_TOKEN_PRIVATE_PULL_WEWEB`
 4. Value: Paste the token you just created in **Step 1**
 5. Click "Add secret"
 
@@ -55,7 +55,7 @@ jobs:
         with:
           repository: weweb-adriengarcia/repo-b  # Your other private repo
           path: weweb-src                               # Where to place it
-          token: ${{ secrets.GITHUB_TOKEN_PRIVATE_PULL_WEWEB }}
+          token: ${{ secrets.GH_TOKEN_PRIVATE_PULL_WEWEB }}
 
       - name: Build/Test
         run: |
@@ -67,7 +67,7 @@ jobs:
 
 - This fine-grained token only accesses Repo B (not all your repos)
 - It's read-only, your CI can only pull code, never push
-- The token automatically expires if you set that up, remember to refresh it and change `GITHUB_TOKEN_PRIVATE_PULL_WEWEB` when it happens
+- The token automatically expires if you set that up, remember to refresh it and change `GH_TOKEN_PRIVATE_PULL_WEWEB` when it happens
 - You can revoke or rotate the token anytime in GitHub settings
 - Each workflow run gets the latest code from Repo B automatically
 - The token is only stored as a secret never commit it to your code

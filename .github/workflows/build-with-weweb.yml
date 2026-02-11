@@ -14,7 +14,7 @@ jobs:
         with:
           repository: weweb-adriengarcia/repo-b  # Change this to your weweb repo
           path: weweb-src                        # Folder where to place weweb code
-          token: ${{ secrets.GITHUB_TOKEN_PRIVATE_PULL_WEWEB }}
+          token: ${{ secrets.GH_TOKEN_PRIVATE_PULL_WEWEB }}
 
       - name: Build/Test
         run: |
